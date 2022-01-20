@@ -483,6 +483,6 @@ def main():
 
 if __name__ == "__main__":
 
-    READ_TYPES = {'total': 0, 'unique': 1, 'multimap': 2}
+    READ_TYPES = {'total': 1, 'unique': 2, 'multimap': 3}
     args = parse_args()
     main()
