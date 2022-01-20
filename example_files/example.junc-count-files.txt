@@ -1,0 +1,9 @@
+/Users/Documents/SomeDirectory/All.sample1.csf.splicing.txt
+/Users/Documents/SomeDirectory/All.sample2.csf.splicing.txt
+/Users/Documents/SomeDirectory/All.sample3.csf.splicing.txt
+/Users/Documents/SomeDirectory/All.sample4.csf.splicing.txt
+/Users/Documents/SomeDirectory/All.sample5.csf.splicing.txt
+/Users/Documents/SomeDirectory/All.sample6.csf.splicing.txt
+/Users/Documents/SomeDirectory/All.sample7.csf.splicing.txt
+/Users/Documents/SomeDirectory/All.sample8.csf.splicing.txt
+/Users/Documents/SomeDirectory/All.sample9.csf.splicing.txt
