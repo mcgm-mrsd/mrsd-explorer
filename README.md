@@ -12,9 +12,9 @@ Toolkit for generation of Minimum Required Sequencing Depth (MRSD) calculations 
 - [Output file formats](#output)
 
 ## <a name="overview"></a>Overview
-MRSD (Minimum Required Sequencing Depth) is a statistical framework to predict the depth of RNA sequencing required to achieve a user-specified level of coverage of a transcript(s) of interest. MRSD score calculations and utility have been described in detail in our recent manuscript (https://doi.org/10.1016/j.ajhg.2021.12.014).
+MRSD (Minimum Required Sequencing Depth) is a statistical framework to predict the depth of RNA sequencing required to achieve a user-specified level of coverage of a transcript(s) of interest. MRSD score calculations and utility have been described in detail in our recent manuscript (https://urldefense.com/v3/__https://doi.org/10.1016/j.ajhg.2021.12.014__;!!OL9ShTEEVu4!4UqMs-TJZXK3W3fsYKDR9nMwQ0GE8P3tfFyvitQ4hLfOP8SMI-nj3ArWgXv4ztV1N-p7kQ$ ).
 
-These MRSD scores are derived from RNA-seq data available through the Genotype-Tissue Expression project (GTEx, https://www.gtexportal.org/home/). GTEx samples are sequenced using an Illumina 75 bp paired-end read poly-A enrichment workflow. As such, the pre-computed MRSDs are most accurate for assessing transcript coverage with similar RNA-seq workflows. For alternative sequencing methodologies, parameter combinations, or tissues, users are invited and encouraged to generate their own MRSD scores using the scripts provided in the `bin/` subdirectory of the above GitHub toolkit, named **MRSDexplorer**.
+These MRSD scores are derived from RNA-seq data available through the Genotype-Tissue Expression project (GTEx, https://urldefense.com/v3/__https://www.gtexportal.org/home/__;!!OL9ShTEEVu4!4UqMs-TJZXK3W3fsYKDR9nMwQ0GE8P3tfFyvitQ4hLfOP8SMI-nj3ArWgXv4ztUVPaAQwA$ ). GTEx samples are sequenced using an Illumina 75 bp paired-end read poly-A enrichment workflow. As such, the pre-computed MRSDs are most accurate for assessing transcript coverage with similar RNA-seq workflows. For alternative sequencing methodologies, parameter combinations, or tissues, users are invited and encouraged to generate their own MRSD scores using the scripts provided in the `bin/` subdirectory of the above GitHub toolkit, named **MRSDexplorer**.
 
 ## <a name="input_files"></a>Generation of MRSD input files
 A minimum of three files are required for each run of MRSD calculations. 
@@ -22,7 +22,7 @@ A minimum of three files are required for each run of MRSD calculations.
 For each set of RNA-seq data to be analysed, the three input files are: 
 
 ### <a name="counts"></a>1. Splice junction read counts
-To generate transcriptome-wide junction counts, we make use of a pipeline developed by Cummings et al. (2017; https://doi.org/10.1126/scitranslmed.aal5209). The computational steps required to produce a count file from FASTQs, including split-read alignment, are described in detail at https://macarthurlab.org/2017/05/31/improving-genetic-diagnosis-in-mendelian-disease-with-transcriptome-sequencing-a-walk-through/, and the corresponding scripts are available at https://github.com/berylc/MendelianRNA-seq.
+To generate transcriptome-wide junction counts, we make use of a pipeline developed by Cummings et al. (2017; https://urldefense.com/v3/__https://doi.org/10.1126/scitranslmed.aal5209__;!!OL9ShTEEVu4!4UqMs-TJZXK3W3fsYKDR9nMwQ0GE8P3tfFyvitQ4hLfOP8SMI-nj3ArWgXv4ztX735u6TA$ ). The computational steps required to produce a count file from FASTQs, including split-read alignment, are described in detail at https://urldefense.com/v3/__https://macarthurlab.org/2017/05/31/improving-genetic-diagnosis-in-mendelian-disease-with-transcriptome-sequencing-a-walk-through/__;!!OL9ShTEEVu4!4UqMs-TJZXK3W3fsYKDR9nMwQ0GE8P3tfFyvitQ4hLfOP8SMI-nj3ArWgXv4ztVmqHxqsQ$ , and the corresponding scripts are available at https://urldefense.com/v3/__https://github.com/berylc/MendelianRNA-seq__;!!OL9ShTEEVu4!4UqMs-TJZXK3W3fsYKDR9nMwQ0GE8P3tfFyvitQ4hLfOP8SMI-nj3ArWgXv4ztXw5N65Sw$ .
 
 The resulting junction count files (with suffix *.csf.splicing.txt*) must be merged and converted for compatibility with MRSDexplorer, which can be done using the `process_cummings_output.py` script:
 
@@ -98,9 +98,9 @@ The supplied coordinates should correspond to the first and final bases of the i
 **Usage:**
 ```sh
 python transcript_bed_generator.py transcripts annotation_gtf output_prefix
-
-Where `transcripts` is a one-per-line list of transcript IDs, `annotation_gtf` is the GTF and `output_prefix` is the prefix of the resulting file name. Running this script yields a BED file with the suffix *.introns.bed* that can be used for downstream score calculation.
 ```
+Where `transcripts` is a one-per-line list of transcript IDs, `annotation_gtf` is the GTF and `output_prefix` is the prefix of the resulting file name. Running this script yields a BED file with the suffix *.introns.bed* that can be used for downstream score calculation.
+
 ## <a name="run"></a>Running MRSD
 Prior to running the final MRSD generation step, the *.junc-counts.txt* and *.seq-depths.txt* files should be moved to the `files/` subdirectory of the MRSDexplorer directory, the default location in which they are searched for. The `MRSDexplorer.py` script can then be used to generate MRSD scores. A typical MRSDexplorer command may look something like this:
 ```sh
@@ -108,19 +108,24 @@ python MRSDexplorer.py --tissues all --number_reads 10 --sj_prop 0.8 --mrsd_para
 ```
 The only required argument is the name of the gene list file or transcript BED, however, multiple optional parameters allow customisation of the MRSD query, including:
 
-`--tissues = a comma-delimited list of prefixes for the desired analysis datasets. MRSDexplorer will search in the files/ subdirectory (or other directory specified by the --splice_dir option) for both a .seq-depths.txt and .junc-counts.txt file with the listed prefixes and include them in analysis if both are present (default = “all”, analysing all matching pairs of .seq-depths.txt and .junc-counts.txt files identified in the --splice_dir subdirectory).`
+`--tissues`
+A comma-delimited list of prefixes for the desired analysis datasets. MRSDexplorer will search in the files/ subdirectory (or other directory specified by the --splice_dir option) for both a .seq-depths.txt and .junc-counts.txt file with the listed prefixes and include them in analysis if both are present (default = “all”, analysing all matching pairs of .seq-depths.txt and .junc-counts.txt files identified in the `--splice_dir` subdirectory).
 
-`--number_reads = desired number of reads to cover proportion of splice junctions specified in --sj_prop (default = 8)`
+`--number_reads`
+Desired number of reads to cover proportion of splice junctions specified in `--sj_prop` (default = 8)
 
-`--sj_prop = desired proportion of transcript splice junctions to be covered by read count specified in --number_reads (default = 0.75, i.e. 75%)`
+`--sj_prop`
+Desired proportion of transcript splice junctions to be covered by read count specified in `--number_reads` (default = 0.75, i.e. 75%)
 
-`--mrsd_param = percentile MRSD value among control samples to be returned as overall MRSD value (default = 0.95, i.e. 95%)`
+`--mrsd_param`
+Percentile MRSD value among control samples to be returned as overall MRSD value (default = 0.95, i.e. 95%)
 
-`--read_type = selected type of read to form the basis of the MRSD calculation (options = total, unique or multimap; default = unique, i.e. uniquely mapping)`
+`--read_type`
+Selected type of read to form the basis of the MRSD calculation (options = total, unique or multimap; default = unique, i.e. uniquely mapping)
 
 Once `MRSDexplorer.py` has loaded the sequencing depths and junctions, and evaluated the MRSDs for the selected genes/transcripts, one or more files will be output into the working directory.
 
-##<a name="output"></a>Output file formats
+## <a name="output"></a>Output file formats
 The primary output file of `MRSDexplorer.py` is a text file with the suffix *.results.mrsd.txt*. This file begins with a set of summary statistics detailing the number of datasets and genes/transcripts successfully surveyed, followed by a list of MRSD scores (in millions of reads) for each of the successfully mapped gene/transcript identifiers, stratified by control dataset.
 ```sh
 $> head example.results.mrsd.txt
